@@ -137,3 +137,31 @@ body { margin: 0; min-width: 320px; background: #eef2f0; }
   .page { padding: 0; max-width: none; }
   .print-sheet { border: 0; padding: 0 !important; }
 }
+
+/* ---------- 系固门禁 ---------- */
+.gate-banner { display: flex; align-items: center; gap: 9px; color: #8e5617; background: #fff7e7; border: 1px solid #ebcf9f; border-radius: 6px; padding: 11px 13px; margin-bottom: 14px; font-size: 12px; }
+.gate-banner span { color: #876f52; flex: 1; }
+.gate-banner.pass { color: #1d5f52; background: #e6f4f0; border-color: #b9d9d0; }
+.gate-banner.pass span { color: #2f6b60; }
+.upgrade-banner { display: flex; align-items: center; gap: 11px; color: #1d5f52; background: #e6f4f0; border: 1px solid #b9d9d0; border-radius: 6px; padding: 11px 13px; margin-bottom: 14px; font-size: 12px; }
+.upgrade-banner div { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.upgrade-banner span { color: #4a7a70; }
+.gate-pass { border-color: #b9d9d0; background: #f6fbfa; }
+.gate-block { border-color: #ebcf9f; background: #fffbf4; }
+.blocker-list { margin-top: 12px; display: flex; flex-direction: column; gap: 6px; }
+.blocker-row { display: flex; align-items: center; gap: 8px; color: #8e5617; background: #fff7e7; border: 1px solid #f0dfc5; border-radius: 4px; padding: 7px 10px; font-size: 11px; }
+.invalid-note { display: flex; align-items: center; gap: 6px; color: #b64440; background: #fdecec; border: 1px solid #f3c4c2; border-radius: 4px; padding: 7px 10px; font-size: 11px; margin-top: 8px; }
+.gear-mini { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.gear-mini > div { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #4a5d56; }
+.gear-mini em { margin-left: auto; font-style: normal; color: #1d5f52; background: #e6f4f0; border-radius: 3px; padding: 1px 6px; font-size: 10px; }
+.point-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); gap: 6px; padding: 12px; }
+.point-grid button { position: relative; aspect-ratio: 1.5; border: 1px dashed #aabbb5; background: rgba(255,255,255,.7); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #647a72; cursor: pointer; }
+.point-grid button.occupied { border-style: solid; background: #2b7c75; color: white; border-color: rgba(255,255,255,.5); }
+.point-grid small { font-size: 9px; }
+.point-grid b { position: absolute; top: 3px; right: 5px; font-size: 9px; }
+.point-grid em { position: absolute; bottom: 3px; right: 5px; font-style: normal; font-size: 8px; opacity: .85; }
+.conc-row { display: flex; align-items: flex-start; gap: 10px; }
+.conc-row > span { font-size: 11px; color: var(--muted); width: 64px; padding-top: 4px; flex-shrink: 0; }
+.conc-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; flex: 1; }
+.conc-chips .mantine-Badge-root { cursor: default; }
+.flush-note { margin-top: 10px; font-size: 11px; color: #4a5d56; background: #f0f6f4; border-radius: 4px; padding: 7px 10px; }

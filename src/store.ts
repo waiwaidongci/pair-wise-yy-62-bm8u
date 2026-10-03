@@ -1,5 +1,6 @@
 import { configureStore, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { stowageApi, type Cargo, type CargoType } from './api';
+import { gateSlice, invalidateStability, persistGateState } from './gate/slice';
 
 export type StowageComment = {
   id: string;
@@ -84,15 +85,28 @@ const slice = createSlice({
 export const { selectCargo, moveCargo, updateLashing, addComment, acceptComment, rejectComment, acceptLimit, setViewMode, lockPlan } = slice.actions;
 
 export const store = configureStore({
-  reducer: { stowage: slice.reducer, [stowageApi.reducerPath]: stowageApi.reducer },
+  reducer: { stowage: slice.reducer, gate: gateSlice.reducer, [stowageApi.reducerPath]: stowageApi.reducer },
   middleware: (getDefault) => getDefault().concat(stowageApi.middleware)
 });
 
+let lastPlanSignature = '';
 store.subscribe(() => {
   if (typeof localStorage !== 'undefined') localStorage.setItem('yy62-stowage-plan', JSON.stringify(store.getState().stowage));
+  persistGateState(store.getState().gate);
+
+  // 重心（货位/重量）变化后，门禁侧稳性结论立即作废
+  const { cargo, planRevision } = store.getState().stowage;
+  const signature = cargo.map((c) => `${c.id}:${c.bay}/${c.row}/${c.tier}:${c.weight}`).join('|');
+  if (lastPlanSignature === '') {
+    lastPlanSignature = signature;
+  } else if (signature !== lastPlanSignature) {
+    lastPlanSignature = signature;
+    store.dispatch(invalidateStability({ planRevision, reason: `货位/重量变化，重心重算` }));
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export function calculateStability(cargo: Cargo[]) {
   const total = cargo.reduce((sum, item) => sum + item.weight, 0);

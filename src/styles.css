@@ -137,3 +137,49 @@ body { margin: 0; min-width: 320px; background: #eef2f0; }
   .page { padding: 0; max-width: none; }
   .print-sheet { border: 0; padding: 0 !important; }
 }
+
+/* 开航门禁 */
+.gate-page .mantine-SegmentedControl-root { font-weight: 700; }
+.gate-card { border: 1px solid var(--line); box-shadow: none !important; }
+.gate-card.gate-bad { border-color: #e3b4b1; background: #fdf5f4; }
+.gate-card.gate-ok { border-color: #9fcbbb; background: #f3faf7; }
+.gate-summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+.gate-check { display: flex; align-items: flex-start; gap: 7px; padding: 6px 9px; border-radius: 5px; background: rgba(255,255,255,.75); font-size: 11px; }
+.gate-check strong, .gate-check span { display: block; }
+.gate-check strong { font-size: 11px; }
+.gate-check span { color: var(--muted); font-size: 10px; margin-top: 2px; }
+.gate-check.pass { color: #1d6b58; }
+.gate-check.fail { color: #a23e3a; background: #fdeceb; }
+.legacy-banner { border: 1px solid #eccfa0; background: #fffaef; }
+.gate-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(360px, .85fr); gap: 14px; align-items: start; margin-top: 14px; }
+.point-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 12px; }
+.point-card { text-align: left; border: 1px dashed #aabbb4; border-radius: 6px; background: rgba(255,255,255,.75); padding: 9px; cursor: pointer; color: inherit; min-height: 104px; display: flex; flex-direction: column; gap: 3px; }
+.point-card:hover:not(:disabled), .point-card.active { border-color: #2b8a78; border-style: solid; background: #eef8f5; }
+.point-card.occupied { border-style: solid; border-color: #8fb8ad; background: #f2f6f5; cursor: not-allowed; }
+.point-card.damaged { border-color: #d9a3a0; background: #fbeeec; cursor: not-allowed; }
+.point-head { display: flex; align-items: center; justify-content: space-between; }
+.point-head strong { font-size: 11px; }
+.point-card small { font-size: 9px; color: var(--muted); }
+.point-assign b, .point-assign span, .point-assign em { display: block; font-style: normal; }
+.point-assign b { font-size: 11px; margin-top: 4px; }
+.point-assign span { font-size: 9px; color: #356057; }
+.point-assign em { font-size: 8px; color: var(--muted); }
+.point-free { margin-top: auto; font-size: 10px; color: #2f806f; font-weight: 700; }
+.advice-card { border-color: #eccfa0 !important; background: #fffaef; }
+.advice-row { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; border-top: 1px solid #f0e2c6; padding-top: 8px; }
+.queue-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; border: 1px solid var(--line); border-radius: 5px; padding: 7px 10px; background: #fafcfb; }
+.point-admin { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 4px; }
+.gate-log { max-height: 320px; overflow: auto; display: flex; flex-direction: column; gap: 4px; }
+.log-line { display: flex; align-items: baseline; gap: 8px; font-size: 11px; color: #46594f; }
+.log-line span { flex: none; font-size: 9px; color: #94a59e; font-variant-numeric: tabular-nums; }
+.log-line i { flex: none; width: 6px; height: 6px; border-radius: 50%; background: #9bb3ab; }
+.log-occupy-ok i { background: #2b8a78; }
+.log-occupy-conflict i, .log-block i { background: #c2504b; }
+.log-invalidate i { background: #c9812a; }
+.log-confirm i, .log-lock i { background: #2b6f8a; }
+.log-queue i { background: #8a9691; }
+.log-migrate i { background: #8a5fc2; }
+@media (max-width: 1100px) {
+  .gate-grid { grid-template-columns: 1fr; }
+  .point-grid { grid-template-columns: repeat(2, 1fr); }
+}
